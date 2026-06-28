@@ -18,7 +18,7 @@ import logging
 import sys
 import time
 from pathlib import Path
-from typing import List, Tuple
+from typing import Any, List, Tuple
 
 from app.explainability import ExplainabilityEngine
 from app.ingestion import stream_candidates
@@ -88,9 +88,13 @@ def main():
     
     candidates_file = Path(args.candidates)
     if not candidates_file.exists():
-        logger.error(f"Input file '{candidates_file}' not found.")
-        sys.exit(1)
-        
+        fallback = Path("./data/candidates.jsonl")
+        if fallback.exists():
+            candidates_file = fallback
+        else:
+            logger.error(f"Input file '{candidates_file}' not found.")
+            sys.exit(1)
+            
     run_pipeline(candidates_file, Path(args.out))
 
 

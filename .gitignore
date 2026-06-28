@@ -6,8 +6,4 @@ __pycache__/
 env/
 venv/
 .venv/
-candidates.jsonl
-*.jsonl
-*.jsonl.gz
 .DS_Store
-temp/
