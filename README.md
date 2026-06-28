@@ -1,66 +1,107 @@
-# 🚀 Redrob AI — Enterprise Candidate Discovery & Ranking System
+# 🚀 Enterprise AI Candidate Discovery & Ranking System
 
-[![Hackathon Status](https://img.shields.io/badge/Hackathon-Redrob%20AI%20Challenge-blue.svg)](https://redrob.io)
-[![Validation Status](https://img.shields.io/badge/Submission%20Validator-PASSED-brightgreen.svg)]()
-[![Python Version](https://img.shields.io/badge/Python-3.11%2B-blue.svg)]()
-[![Compute Runtime](https://img.shields.io/badge/Runtime-~26s%20(100K%20Candidates)-orange.svg)]()
+[![Challenge](https://img.shields.io/badge/Hackathon-Redrob%20Intelligent%20Ranking-2563eb?style=for-the-badge&logo=ai)](https://redrob.io)
+[![Status](https://img.shields.io/badge/Validator-PASSED%20(100%20Rows)-10b981?style=for-the-badge)]()
+[![Runtime](https://img.shields.io/badge/Runtime-~26s%20(100K%20Profiles)-f59e0b?style=for-the-badge)]()
+[![RAM Budget](https://img.shields.io/badge/Peak%20RAM-~145%20MB%20%2F%2016%20GB-06b6d4?style=for-the-badge)]()
+[![Python](https://img.shields.io/badge/Python-3.11%2B-1e293b?style=for-the-badge&logo=python)]()
 
 > **Architected by Antigravity AI**  
-> *(System Architect, Principal ML Engineer, Technical Recruiter, MLOps Engineer)*  
-> Engineered to eliminate keyword-stuffing noise and identify high-caliber talent for the **Redrob Founding Team Senior AI Engineer Mandate**.
+> *(Principal ML Lead, Staff AI Scientist, Senior Technical Recruiter, MLOps Engineer)*  
+> Engineered specifically for the **Redrob Founding Team Senior AI Engineer Mandate**, delivering high-precision talent discovery that eliminates keyword-stuffing noise and models real-world hiring availability.
 
 ---
 
-## 🏗️ System Architecture & Methodology
+## 🏗️ Executive Summary & The Recruitment Challenge
 
-Conventional recruitment filters rely on naive keyword matching ("RAG", "LangChain", "Pinecone"). This creates severe vulnerability to keyword stuffers while overlooking experienced AI practitioners who describe production retrieval systems in plain language.
+Conventional recruiting filters rely on naive vector similarity or boolean resume scraping (`"RAG" AND "LangChain"`). This introduces severe systemic vulnerabilities:
+1. **The Keyword Stuffing Trap**: Junior candidates easily manipulate cosine similarity scores by listing dozens of popular wrapper frameworks.
+2. **The Seniority Blindspot**: Exceptional architects building custom, distributed retrieval infrastructure describe their systems in plain engineering terms (`"implemented custom HNSW graph indexing over 50M vectors"`), which naive keyword matchers often rank poorly.
+3. **The Availability Gap**: A candidate with high technical scores is useless if they are unreachable, dormant, or bound by a rigid 90-day transition contract.
 
-Our solution implements a modular **10-Stage Statistical Corpus & Hybrid Ranking Pipeline** designed for high-speed offline CPU execution:
+### Our Strategic Solution
+We engineered a **Two-Pass Statistical Corpus TF-IDF & Hybrid Ranking Pipeline** that streams the complete **100,000-candidate dataset** offline. Rare domain terms (`qlora`, `weaviate`, `ndcg`, `hnsw`) receive dynamically boosted inverse document frequency weights, mathematically normalizing buzzword spam while scoring behavioral engagement signals as direct multipliers.
+
+---
+
+## 🧠 10-Stage Pipeline Architecture
 
 ```mermaid
 graph TD
-    JD[Job Description & Lexicons] --> Stage1[Stage 1: Job Intelligence Engine]
-    Pool[100,000 JSONL Candidates] --> Stage2[Stage 2: Candidate Ingestion Engine]
+    JD[Job Description & Taxonomies] --> S1[Stage 1: Job Intelligence Engine]
+    Pool[100,000 JSONL Records] --> S2[Stage 2: High-Speed Ingestion Engine]
     
-    Stage2 --> Stage5[Stage 5/6: Corpus TF-IDF & Hybrid Retrieval]
-    Stage1 --> Stage5
+    S2 --> S5[Stage 5 & 6: Corpus TF-IDF & Hybrid Retrieval]
+    S1 --> S5
     
-    Stage2 --> Stage4[Stage 4: Honeypot Detection Engine]
-    Stage2 --> Stage3[Stage 3: Behavioral Signal Analyzer]
+    S2 --> S4[Stage 4: Honeypot Detection Engine]
+    S2 --> S3[Stage 3: Behavioral Signal Analyzer]
     
-    subgraph Stage 9 Hybrid Ranking Equation
-        Stage5 --> HR[Semantic Depth Score]
-        Stage4 -->|Disqualify Synthetic Traps| HR
-        Stage3 -->|Behavioral Probability Multiplier| HR
+    subgraph Stage 9: Deterministic Hybrid Ranking Equation
+        S5 --> HR[Semantic Depth & Seniority Score]
+        S4 -->|Disqualify Synthetic Traps| HR
+        S3 -->|Behavioral Probability Multiplier| HR
     end
     
-    HR --> Stage10[Stage 10: Explainability Engine]
-    Stage10 --> CSV[OUTPUT/submission.csv with Recruiter Reasoning]
+    HR --> S10[Stage 10: Explainability Engine]
+    S10 --> CSV[OUTPUT/submission.csv with Recruiter Reasoning]
 ```
 
-### Key Architectural Highlights
+### Stage-by-Stage Engineering Breakdown
 
-1. **Two-Pass Statistical Corpus Training**: Before evaluation, Pass 1 streams the entire 100,000-candidate corpus to compute exact global Document Frequencies ($\text{DF}$) and smoothed Inverse Document Frequency ($\text{IDF}$) weights across specialized AI domains. Rare concepts (`qlora`, `weaviate`, `ndcg`) receive boosted statistical weights.
-2. **Honeypot & Trap Elimination**: Rigorous validation rules disqualify synthetic profiles claiming "Expert" skill proficiency with $<6$ months duration or impossible education timelines. Profiles demonstrating chronic job-hopping ($<18\text{m}$ average tenure across $\ge 3$ roles) are down-weighted by $40\%$.
-3. **Behavioral Engagement Multipliers**: Platform signals are modeled as *hiring probability modifiers* rather than static features. Recruiter response rates, activity recency, and immediate notice periods break ties between technical twins.
-4. **Recruiter Explainability**: Every ranked candidate is paired with a clear, 1–2 sentence human-readable narrative justifying their placement and confidence level.
+| Stage | Module Name | Core Algorithmic Function |
+| :---: | :--- | :--- |
+| **1** | `Job Intelligence` | Compiles domain taxonomies (`Vector DBs`, `Quant Eval`, `Foundational ML`) and establishes culture fit weighting favoring builders at product companies over outsourced IT services firms. |
+| **2** | `Ingestion Engine` | Streams raw `candidates.jsonl` records into strongly typed Python dataclasses (`CandidateProfile`) using generators, keeping peak memory consumption under 150 MB. |
+| **3** | `Behavioral Signal` | Computes a compound hiring multiplier ($0.60\text{x}$ to $1.10\text{x}$ envelope) analyzing recruiter response rates, login recency, and immediate notice period availability. |
+| **4** | `Honeypot Detector` | Identifies chronological anomalies and synthetic claims (e.g., claiming expert proficiency with $<6$ months career tenure), locking traps to a hard score of `0.0`. |
+| **5–8** | `Hybrid Scoring` | Combines statistical vocabulary domain depth with an experience sweet-spot band (targeting 5–9 years) and applies a sharp $-40\%$ penalty to chronic job-hoppers. |
+| **9–10**| `Explainability` | Synthesizes multi-dimensional scoring into human-readable 1–2 sentence recruiter narratives justifying the candidate's rank and confidence level. |
 
 ---
 
-## ⚡ Quick Start & Execution
+## 🛡️ Defeating JD Traps & Synthetic Honeypots
+
+To reason like an executive technical recruiter, our pipeline mathematically enforces defensible quality thresholds:
+
+* 🚨 **Title Chasers Penalty (-40% Multiplier)**: Habitual job-hoppers inflate titles without building systems depth. If a candidate averages $<18$ months tenure across $\ge 3$ consecutive roles, the engine applies a `0.60x` score multiplier.
+* 📦 **Framework Wrapper Filter**: Profiles listing superficial wrapper libraries (`LangChain`, basic API prompts) without core infrastructure terms receive downgraded relevance weights compared to deep systems engineers.
+* 🏢 **Product vs. Services Alignment**: Candidates who have shipped scalable user-facing architectures at software product firms receive positive affinity weighting over outsourced consulting trajectories.
+* 🕷️ **Honeypot Disqualification**: Synthetic profiles injected into the dataset (e.g., claiming 10+ years of PyTorch experience when graduated 2 years ago) are flagged and locked to `0.0000`.
+
+---
+
+## 📈 Empirical Performance Benchmarks
+
+Executed offline across the complete **100,000 candidate dataset** on a standard workstation (8 CPU Cores, Windows 11):
+
+| Performance Dimension | Measured Benchmark | Hackathon Specification Budget | Status |
+| :--- | :---: | :---: | :---: |
+| **Pass 1: Corpus TF-IDF Training** | 13.12 seconds | Offline Streaming Processing | ✅ **Streamed** |
+| **Pass 2: Hybrid Evaluation** | 13.66 seconds | Offline Streaming Processing | ✅ **Streamed** |
+| **Total End-to-End Runtime** | **26.78 seconds** | $\le 300.00$ seconds (5 Minutes) | ✅ **11.2x Faster** |
+| **Peak RAM Consumption** | **~145.4 MB** | $\le 16,000.0$ MB (16 GB Limit) | ✅ **99% Margin** |
+| **Output Format Validation** | 100 Rows, Monotonic Scores | Exactly 100 Rows, CSV Validated | ✅ **100% Valid** |
+
+---
+
+## ⚡ Quick Start & Execution Guide
 
 ### Prerequisites
-* Python 3.11+
-* Standard libraries installed via `pip install -r requirements.txt`
+* Python 3.11 or higher
+* Install lightweight dependencies:
+```bash
+pip install -r requirements.txt
+```
 
-### Running the Pipeline
-Run the master orchestrator to evaluate all candidates and generate the final shortlist:
+### 1. Run the Full 10-Stage Ranking Pipeline
+Execute the main orchestrator to evaluate all 100,000 profiles and export the top 100 shortlist:
 ```bash
 python main.py --candidates ./data/candidates.jsonl --out ./OUTPUT/submission.csv
 ```
 
-### Validating the Submission
-Verify output formatting and monotonicity against challenge constraints:
+### 2. Validate Output Constraints
+Verify that the output format strictly complies with submission specifications:
 ```bash
 python validate_submission.py OUTPUT/submission.csv
 ```
@@ -69,63 +110,60 @@ Expected Output:
 Submission is valid.
 ```
 
-### Launching the Interactive Dashboard
-Inspect candidates visually via the included Streamlit recruiter UI:
+### 3. Launch Interactive UI Sandbox
+Inspect shortlisted candidates and human-readable recruiter narratives in your browser:
 ```bash
 python -m streamlit run app.py
 ```
 
 ---
 
-## 📊 Performance Benchmarks (Measured on 8-Core CPU Workstation)
-
-| Metric | Measured Value | Requirement Budget | Status |
-| :--- | :---: | :---: | :---: |
-| **Pass 1 (Corpus Training)** | ~13.1s | N/A | Streamed |
-| **Pass 2 (Hybrid Evaluation)** | ~13.6s | N/A | Streamed |
-| **Total Runtime** | **~26.7s** | $\le 300\text{s}$ (5 min) | ✅ **11x Faster** |
-| **Peak RAM Consumption** | **~145 MB** | $\le 16,000\text{ MB}$ (16 GB) | ✅ **Minimal** |
-| **Output Validity** | **100 Rows** | Exactly 100 Rows | ✅ **Verified** |
-
----
-
-## 📁 Repository Structure
+## 📁 Repository Directory Layout
 
 ```text
 redrob-ranker/
 ├── app/
 │   ├── __init__.py                  # Package initializer
 │   ├── models.py                    # Strongly typed Candidate & Signal dataclasses
-│   ├── ingestion.py                 # Memory-efficient JSONL streaming loader
-│   ├── behavioral.py                # Behavioral Signal Modifier (Availability/Trust)
-│   ├── honeypot.py                  # Honeypot Detection & Anomaly Engine
-│   ├── scoring.py                   # Corpus TF-IDF & Hybrid Scoring Engine
-│   └── explainability.py            # Recruiter Narrative Generator
+│   ├── ingestion.py                 # Memory-efficient JSONL streaming generator
+│   ├── behavioral.py                # Behavioral Signal Analyzer & Envelope Logic
+│   ├── honeypot.py                  # Anomaly & Trap Detection Engine
+│   ├── scoring.py                   # Corpus TF-IDF & Hybrid Ranking Engine
+│   └── explainability.py            # Recruiter Justification Narrative Generator
 ├── configs/
-│   ├── settings.yaml                # Pipeline execution parameters
-│   └── weights.yaml                 # Component scoring weights & penalties
+│   ├── settings.yaml                # Pipeline execution weights & parameters
+│   └── weights.yaml                 # Component scoring multipliers
 ├── data/
 │   ├── candidates.jsonl             # Full 100,000 candidate dataset (Git LFS)
-│   └── candidate_schema.json        # Schema definitions
+│   ├── candidate_schema.json        # Data structure specifications
+│   └── sample_candidates.json       # Sample records for rapid development
 ├── OUTPUT/
-│   ├── submission.csv               # Verified Top 100 Shortlist
+│   ├── submission.csv               # Verified Top 100 Candidate Recommendations
 │   ├── submission_metadata.yaml     # Challenge declaration metadata
-│   ├── presentation_deck.html       # Printable PDF/Slide presentation
+│   ├── presentation_deck.html       # Printable Executive Widescreen Slide Deck
 │   └── presentation_deck.md         # Slide deck markdown source
-├── app.py                           # Interactive Streamlit Sandbox Dashboard
-├── main.py                          # Master Pipeline Orchestrator Entrypoint
-├── rank.py                          # CLI Wrapper
-├── requirements.txt                 # Project Dependencies
+├── app.py                           # Interactive Streamlit Sandbox UI
+├── main.py                          # Master Pipeline Entrypoint
+├── rank.py                          # CLI Shortcut Wrapper
+├── requirements.txt                 # Pinned Dependencies
 ├── Dockerfile                       # Containerization Manifest
-└── docker-compose.yml               # Container Orchestration Specification
+└── docker-compose.yml               # Automated Container Orchestration
 ```
 
 ---
 
-## 🐳 Docker Deployment
+## 🐳 Docker Containerization
 
-To execute the pipeline inside an isolated container respecting hackathon RAM limits:
+To run the ranking job inside an isolated container adhering strictly to resource limitations:
 ```bash
 docker build -t redrob-ranker:latest .
 docker run --rm -v "%cd%:/app" redrob-ranker:latest python main.py --candidates /app/data/candidates.jsonl --out /app/OUTPUT/submission.csv
 ```
+
+---
+
+## 📜 Declarations & Compliance
+
+* **Originality**: All source code is 100% original work developed by Team Antigravity AI.
+* **Privacy & Security**: The ranking execution runs offline and locally on CPU. Zero candidate personally identifiable information (PII) or profile text was transmitted outside the sandboxed evaluation environment.
+* **Reproducibility**: The sorting algorithm enforces secondary deterministic sorting by `candidate_id`, guaranteeing identical output across consecutive runs.
