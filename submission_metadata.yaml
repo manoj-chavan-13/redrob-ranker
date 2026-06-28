@@ -1,0 +1,54 @@
+# Redrob Hackathon — Submission Metadata
+team_name: "Antigravity AI"
+
+primary_contact:
+  name: "Manoj Chavan"
+  email: "manoj@example.com"
+  phone: "+91-9876543210"
+
+team_members:
+  - name: "Manoj Chavan"
+    email: "manoj@example.com"
+    role: "AI Lead & System Architect"
+
+github_repo: "https://github.com/manoj-chavan-13/redrob-ranker"
+sandbox_link: "https://huggingface.co/spaces/manoj-chavan-13/redrob-ranker"
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+compute:
+  platform: "Local Windows Workstation"
+  cpu_cores: 8
+  ram_gb: 16
+  python_version: "3.14"
+  os: "Windows 11"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: false
+  pre_computation_time_minutes: 0
+
+ai_tools_used:
+  - "Claude"
+  - "Gemini"
+
+ai_usage_summary: |
+  Used Gemini 3.1 Pro for data exploration, honeypot analysis, and architecting the hybrid scoring functions.
+  No candidate data or personally identifiable information was transmitted outside the sandboxed evaluation environment.
+
+methodology_summary: |
+  Two-Pass Statistical Corpus TF-IDF Ranker trained across the complete 100,000 candidate dataset specifically for Redrob AI's Founding Team Senior AI Engineer mandate.
+  Our ranking pipeline executes in two distinct streaming passes over the entire data pool:
+  Pass 1 (Corpus Training): Scans all 100,000 candidate profiles to learn global document frequencies (DF) and compute exact Inverse Document Frequency (IDF) weights across our domain vocabulary. Rare terms (e.g., 'qlora', 'weaviate', 'ndcg', 'hybrid retrieval') receive dynamically boosted semantic weights.
+  Pass 2 (Hybrid Evaluation): Scores all 100,000 candidates combining learned TF-IDF weights with four domain dimensions:
+  1. Role Relevance & Anti-Stuffer Filter: Prioritizes core AI/ML titles at product companies while filtering out keyword-stuffed irrelevant titles (e.g., Marketing/Operations).
+  2. Experience Sweet-Spot & Anti-Job-Hopping: Targets the 5–9 year band and penalizes 'title chasers' with tenure <18 months across multiple hops.
+  3. Honeypot Disqualification: Rigorously eliminates impossible profiles (expert skills with <6 months duration, impossible chronology).
+  4. Behavioral Engagement Multiplier: Adjusts final ranking based on recruiter response rates, recent login activity, notice period (<30 days boosted), and open-to-work status.
+  Runtime is ~16 seconds for 100K candidates on CPU.
+
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true

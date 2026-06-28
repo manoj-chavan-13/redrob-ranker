@@ -1,0 +1,17 @@
+# Stage 9 Hybrid Ranking Component Weights
+weights:
+  semantic_similarity: 0.30
+  cross_encoder_reranking: 0.20
+  behavioral_score: 0.15
+  career_progression: 0.10
+  availability: 0.10
+  skill_coverage: 0.05
+  leadership: 0.05
+  education: 0.025
+  certifications: 0.025
+
+penalties:
+  honeypot_disqualification: 1.00 # Lock to 0 score
+  title_chasing_job_hopper: 0.40  # Downweight by 40%
+  services_only_firm: 0.75        # Downweight by 75%
+  framework_only_wrapper: 0.60    # Downweight by 60%

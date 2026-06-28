@@ -1,0 +1,13 @@
+# Pipeline Execution Settings
+pipeline:
+  top_k_retrieval: 1000
+  top_k_rerank: 300
+  final_output_rows: 100
+  offline_mode: true
+  cpu_only: true
+  max_runtime_seconds: 300
+  memory_limit_gb: 16
+
+paths:
+  candidates_input: "./candidates.jsonl"
+  submission_output: "./submission.csv"

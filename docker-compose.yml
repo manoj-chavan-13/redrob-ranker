@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  redrob-ranker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: redrob-ranker:latest
+    container_name: redrob_candidate_ranking
+    volumes:
+      - ./:/app
+    command: ["--candidates", "/app/candidates.jsonl", "--out", "/app/submission.csv"]
+    environment:
+      - PYTHONUNBUFFERED=1
+    mem_limit: 16g
+    cpus: 4
