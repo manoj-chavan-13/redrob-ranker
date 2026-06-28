@@ -3,25 +3,27 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Redrob AI Candidate Ranking System — Executive Presentation</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+<title>Redrob AI Intelligent Candidate Ranking System — Executive Presentation Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-main: #0b0f19;
-    --slide-bg: #111827;
-    --primary: #3b82f6;
-    --accent: #06b6d4;
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
-    --border: rgba(255, 255, 255, 0.08);
-    --card-bg: rgba(255, 255, 255, 0.03);
+    --bg-page: #f1f5f9;
+    --slide-bg: #ffffff;
+    --primary: #1e3a8a;
+    --primary-light: #2563eb;
+    --accent: #0284c7;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --border: #cbd5e1;
+    --card-bg: #f8fafc;
+    --highlight: #eff6ff;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Inter', -apple-system, sans-serif;
-    background-color: var(--bg-main);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-page);
     color: var(--text-main);
     overflow: hidden;
     height: 100vh;
@@ -30,35 +32,48 @@
     user-select: none;
   }
 
-  /* Top Navigation / Info Bar */
+  /* Navigation Header */
   .top-bar {
-    height: 60px;
-    padding: 0 40px;
+    height: 64px;
+    padding: 0 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid var(--border);
-    background: rgba(11, 15, 25, 0.8);
-    backdrop-filter: blur(10px);
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     z-index: 10;
   }
 
   .brand {
     font-family: 'Outfit', sans-serif;
     font-weight: 800;
-    font-size: 20px;
-    background: linear-gradient(135deg, #60a5fa, #34d399);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 22px;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand span {
+    font-size: 13px;
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
 
   .hint {
     font-size: 13px;
     color: var(--text-muted);
-    background: rgba(255, 255, 255, 0.05);
-    padding: 6px 14px;
+    background: #f1f5f9;
+    padding: 6px 16px;
     border-radius: 20px;
     border: 1px solid var(--border);
+    font-weight: 500;
   }
 
   /* Presentation Stage */
@@ -68,18 +83,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 24px;
   }
 
   .slides-viewport {
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px;
     aspect-ratio: 16 / 9;
     position: relative;
     overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--border);
     background: var(--slide-bg);
   }
 
@@ -93,156 +108,159 @@
   .slide {
     min-width: 100%;
     height: 100%;
-    padding: 50px 60px;
+    padding: 48px 64px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
   }
 
-  .slide::top-border {
+  .slide::before {
     content: "";
     position: absolute;
-    top: 0; left: 0; width: 100%; height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--accent));
+    top: 0; left: 0; width: 100%; height: 6px;
+    background: linear-gradient(90deg, var(--primary), var(--primary-light), var(--accent));
   }
 
-  /* Slide Internal Styling */
+  /* Slide Header */
   .slide-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 20px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 18px;
   }
 
   .category {
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: var(--accent);
+    color: var(--primary-light);
     font-weight: 700;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
   .slide-title {
     font-family: 'Outfit', sans-serif;
     font-size: 32px;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--primary);
   }
 
   .slide-num {
     font-family: 'Outfit', sans-serif;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 800;
-    color: rgba(255, 255, 255, 0.15);
+    color: #cbd5e1;
   }
 
+  /* Slide Body Content */
   .slide-body {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-size: 18px;
-    line-height: 1.6;
-    color: #e2e8f0;
-    padding: 20px 0;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-main);
+    padding: 16px 0;
   }
 
-  .lead { font-size: 20px; color: #94a3b8; margin-bottom: 25px; }
+  .lead { font-size: 18px; color: #334155; margin-bottom: 20px; font-weight: 500; }
 
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .grid-4 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 
   .card {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    padding: 22px;
-    border-radius: 14px;
+    padding: 20px;
+    border-radius: 12px;
     position: relative;
-    overflow: hidden;
-    transition: transform 0.2s;
+    border-left: 4px solid var(--primary-light);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
   }
-  .card:hover { transform: translateY(-3px); border-color: rgba(59, 130, 246, 0.4); }
-  .card::before { content: ""; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--primary); }
-  
-  .card h4 { font-family: 'Outfit', sans-serif; font-size: 18px; color: #fff; margin-bottom: 8px; }
+  .card h4 { font-family: 'Outfit', sans-serif; font-size: 18px; color: var(--primary); margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between; }
   .card p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
-
-  ul.styled-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-  ul.styled-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 16px; }
-  ul.styled-list li::before { content: "✓"; color: var(--accent); font-weight: bold; background: rgba(6, 182, 212, 0.1); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 14px; }
-
-  table { width: 100%; border-collapse: collapse; margin-top: 10px; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
-  th, td { padding: 14px 18px; text-align: left; }
-  th { background: rgba(255, 255, 255, 0.05); font-weight: 600; font-size: 14px; text-transform: uppercase; color: var(--accent); border-bottom: 1px solid var(--border); }
-  td { font-size: 15px; border-bottom: 1px solid var(--border); background: rgba(0,0,0,0.2); }
   
-  .badge { background: rgba(59, 130, 246, 0.15); color: #60a5fa; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; border: 1px solid rgba(59, 130, 246, 0.3); }
-  .badge-success { background: rgba(16, 185, 129, 0.15); color: #34d399; border-color: rgba(16, 185, 129, 0.3); }
+  code {
+    font-family: 'JetBrains Mono', monospace;
+    background: #e2e8f0;
+    color: #1e293b;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 600;
+  }
 
+  ul.detailed-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  ul.detailed-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; color: var(--text-main); }
+  ul.detailed-list li strong { color: var(--primary); min-width: 180px; }
+  ul.detailed-list li::before { content: "▪"; color: var(--primary-light); font-size: 20px; line-height: 1; }
+
+  table { width: 100%; border-collapse: collapse; margin-top: 8px; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+  th, td { padding: 12px 16px; text-align: left; font-size: 14px; }
+  th { background: #f1f5f9; font-weight: 700; text-transform: uppercase; color: var(--primary); border-bottom: 2px solid var(--border); font-size: 13px; }
+  td { border-bottom: 1px solid #e2e8f0; background: #ffffff; color: #334155; }
+  tr:nth-child(even) td { background: #f8fafc; }
+
+  .badge { background: #eff6ff; color: #1d4ed8; padding: 3px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; border: 1px solid #bfdbfe; display: inline-block; }
+  .badge-red { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+  .badge-green { background: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
+
+  /* Slide Footer */
   .slide-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid #e2e8f0;
     padding-top: 16px;
     font-size: 13px;
-    color: var(--text-muted);
+    color: #64748b;
+    font-weight: 500;
   }
 
   /* Bottom Controls Navigation */
   .controls {
-    height: 70px;
-    padding: 0 40px;
+    height: 64px;
+    padding: 0 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(11, 15, 25, 0.9);
+    background: #ffffff;
     border-top: 1px solid var(--border);
   }
 
   .btn {
-    background: var(--card-bg);
-    color: var(--text-main);
+    background: #f1f5f9;
+    color: var(--primary);
     border: 1px solid var(--border);
     padding: 10px 24px;
-    border-radius: 30px;
+    border-radius: 8px;
     font-family: 'Outfit', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 8px;
   }
-  .btn:hover:not(:disabled) { background: var(--primary); border-color: var(--primary); }
-  .btn:disabled { opacity: 0.3; cursor: not-allowed; }
+  .btn:hover:not(:disabled) { background: var(--primary); color: #ffffff; border-color: var(--primary); }
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-  .dots { display: flex; gap: 10px; }
-  .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor: pointer; transition: all 0.3s; }
-  .dot.active { width: 30px; border-radius: 10px; background: var(--accent); }
+  .dots { display: flex; gap: 8px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: #cbd5e1; cursor: pointer; transition: all 0.3s; }
+  .dot.active { width: 28px; border-radius: 6px; background: var(--primary-light); }
 
-  /* Progress Bar */
-  .progress-bar { position: absolute; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 0.3s; z-index: 100; }
+  .progress-bar { position: absolute; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 0.3s; z-index: 100; }
 
-  /* PDF Print Layout Override */
+  /* PDF Print Override */
   @media print {
     @page { size: landscape; margin: 0; }
-    body { height: auto; overflow: visible; background: white; color: #1e293b; }
+    body { height: auto; overflow: visible; background: white; }
     .top-bar, .controls, .progress-bar { display: none !important; }
     .stage-container { padding: 0; display: block; }
-    .slides-viewport { max-width: 100%; aspect-ratio: auto; border: none; box-shadow: none; border-radius: 0; overflow: visible; background: white; }
+    .slides-viewport { max-width: 100%; aspect-ratio: auto; border: none; box-shadow: none; border-radius: 0; overflow: visible; }
     .slides-track { display: block; transform: none !important; }
-    .slide { height: 100vh; page-break-after: always; padding: 40px 60px; background: white; color: #1e293b; border-bottom: 1px solid #cbd5e1; }
-    .slide-title, .card h4 { color: #1e40af; }
-    .lead, .card p, .slide-body { color: #334155; }
-    .card { background: #f8fafc; border-color: #cbd5e1; }
-    th { background: #f1f5f9; color: #1e40af; }
-    td { background: white; color: #1e293b; border-color: #cbd5e1; }
-    .slide-footer { border-color: #cbd5e1; color: #64748b; }
+    .slide { height: 100vh; page-break-after: always; padding: 40px 60px; border-bottom: 1px solid #cbd5e1; }
   }
 </style>
 </head>
@@ -251,8 +269,8 @@
 <div class="progress-bar" id="progress"></div>
 
 <div class="top-bar">
-  <div class="brand">ANTIGRAVITY AI // REDROB RANKER</div>
-  <div class="hint">Use <strong>← Left / Right →</strong> arrow keys to navigate &nbsp;|&nbsp; <strong>Ctrl + P</strong> to Print PDF</div>
+  <div class="brand">REDROB INTELLIGENT RANKING <span>Executive Solution Deck</span></div>
+  <div class="hint">Use <strong>← Left / Right →</strong> arrow keys to navigate &nbsp;|&nbsp; Press <strong>Ctrl + P</strong> to print PDF</div>
 </div>
 
 <div class="stage-container">
@@ -263,27 +281,27 @@
       <div class="slide">
         <div class="slide-header">
           <div>
-            <div class="category">Executive Overview</div>
-            <div class="slide-title">The Candidate Discovery Mandate</div>
+            <div class="category">Executive Summary</div>
+            <div class="slide-title">Engineering AI Discovery for Senior Mandates</div>
           </div>
           <div class="slide-num">01</div>
         </div>
         <div class="slide-body">
-          <p class="lead">Building an intelligent recruiting pipeline for the <strong>Senior AI Engineer</strong> role that reasons like an experienced human executive recruiter.</p>
+          <p class="lead">Targeting the <strong>Founding Team Senior AI Engineer</strong> role requires an AI talent discovery pipeline that avoids superficial keyword matching and evaluates architectural depth, production scale, and hiring probability.</p>
           <div class="grid-2">
-            <div class="card">
-              <h4>The Keyword-Stuffing Trap</h4>
-              <p>Naive vector search and basic boolean filters ("RAG", "LangChain") are easily gamed by keyword stuffers while rejecting senior architects who describe production vector retrieval systems in plain engineering terms.</p>
+            <div class="card" style="border-left-color: #dc2626;">
+              <h4>The Keyword Stuffing Vulnerability <span class="badge badge-red">Conventional RAG</span></h4>
+              <p>Standard vector similarity filters fail because junior candidates stuff resumes with buzzwords (<code>LangChain</code>, <code>RAG</code>, <code>Pinecone</code>), while exceptional senior architects who describe custom retrieval infrastructure in plain engineering text get filtered out.</p>
             </div>
-            <div class="card" style="--primary: var(--accent);">
-              <h4>Our 2-Pass Statistical Solution</h4>
-              <p>We engineered a Two-Pass Corpus TF-IDF Ranker trained dynamically across all 100,000 candidates to mathematically boost rare domain terms while normalizing repetitive buzzwords.</p>
+            <div class="card" style="border-left-color: #16a34a;">
+              <h4>Our Two-Pass Statistical Solution <span class="badge badge-green">Antigravity AI</span></h4>
+              <p>We implement a <strong>Statistical Corpus TF-IDF Ranker</strong> that first streams all 100,000 profiles to learn global document frequencies (DF). Rare terms (<code>qlora</code>, <code>weaviate</code>, <code>ndcg</code>) receive dynamically boosted semantic weights, normalizing generic noise.</p>
             </div>
           </div>
         </div>
         <div class="slide-footer">
-          <span>Team Antigravity AI</span>
-          <span>Redrob Hackathon Submission</span>
+          <span>Team Antigravity AI — Principal ML Lead & Solution Architect</span>
+          <span>Redrob Intelligent Candidate Discovery Challenge</span>
         </div>
       </div>
 
@@ -292,23 +310,23 @@
         <div class="slide-header">
           <div>
             <div class="category">System Architecture</div>
-            <div class="slide-title">10-Stage Ranking Pipeline</div>
+            <div class="slide-title">10-Stage Candidate Ranking Pipeline</div>
           </div>
           <div class="slide-num">02</div>
         </div>
         <div class="slide-body">
-          <ul class="styled-list">
-            <li><strong>Stage 1: Job Intelligence Engine</strong> — Builds specialized retrieval lexicons and codifies product company culture fit rules.</li>
-            <li><strong>Stage 2: Candidate Ingestion Engine</strong> — Streams 100K JSONL records into strongly typed dataclasses without memory bloat.</li>
-            <li><strong>Stage 3: Behavioral Signal Analyzer</strong> — Evaluates responsiveness, notice periods, and login recency as hiring probability multipliers.</li>
-            <li><strong>Stage 4: Honeypot Detection Engine</strong> — Identifies chronological conflicts and unrealistic skill claims, locking traps to score 0.0.</li>
-            <li><strong>Stage 5 & 6: Corpus TF-IDF & Hybrid Retrieval</strong> — Computes exact global Document Frequencies (DF) across the full candidate pool.</li>
-            <li><strong>Stage 9 & 10: Hybrid Formula & Explainability</strong> — Balances semantic depth with 5–9 year sweet-spot banding and synthesizes recruiter explanations.</li>
+          <ul class="detailed-list">
+            <li><strong>Stage 1: Job Intelligence</strong> Codifies specialized domain lexicons (<code>RETRIEVAL_TERMS</code>, <code>VECTOR_DB_TERMS</code>, <code>EVAL_TERMS</code>) and establishes culture fit weighting (prioritizing product companies over IT services firms).</li>
+            <li><strong>Stage 2: Ingestion Engine</strong> High-speed JSONL streaming parser mapping raw records into strongly typed Python dataclasses (<code>CandidateProfile</code>) with zero memory bloat (&lt;150 MB RAM).</li>
+            <li><strong>Stage 3: Behavioral Signal</strong> Evaluates 23 platform signals as a hiring probability modifier ($0.6\text{x}$ to $1.1\text{x}$ envelope), boosting responsive candidates with immediate notice periods.</li>
+            <li><strong>Stage 4: Honeypot Detection</strong> Rigorously screens chronological conflicts and synthetic skill claims (e.g., claiming expert skill with &lt;6m tenure), assigning traps a hard score of <code>0.0</code>.</li>
+            <li><strong>Stage 5–8: Hybrid Scoring</strong> Combines statistical TF-IDF domain scores with experience sweet-spot banding (5–9 years target band) and anti-job-hopping penalties.</li>
+            <li><strong>Stage 9–10: Explainability</strong> Synthesizes multi-dimensional scoring into human-readable 1–2 sentence recruiter narratives justifying candidate rank and confidence level.</li>
           </ul>
         </div>
         <div class="slide-footer">
-          <span>Team Antigravity AI</span>
-          <span>Redrob Hackathon Submission</span>
+          <span>Team Antigravity AI — Principal ML Lead & Solution Architect</span>
+          <span>Redrob Intelligent Candidate Discovery Challenge</span>
         </div>
       </div>
 
@@ -316,34 +334,31 @@
       <div class="slide">
         <div class="slide-header">
           <div>
-            <div class="category">Quality Assurance</div>
-            <div class="slide-title">Defeating JD Traps & Honeypots</div>
+            <div class="category">Domain Intelligence</div>
+            <div class="slide-title">Mathematical Defensibility & Lexicon Deep Dive</div>
           </div>
           <div class="slide-num">03</div>
         </div>
         <div class="slide-body">
-          <div class="grid-4">
-            <div class="card" style="--primary: #ef4444;">
-              <h4>Title Chasers Penalty</h4>
-              <p>Profiles averaging &lt;18 months tenure across &ge;3 roles incur a 40% penalty, preventing habitual job-hoppers from bypassing filters.</p>
+          <p class="lead">To quantify engineering seniority, our engine evaluates candidate profiles against curated technical taxonomies and calculates precise Inverse Document Frequency weights:</p>
+          <div class="grid-3">
+            <div class="card">
+              <h4>Vector Retrieval Infrastructure</h4>
+              <p>Prioritizes candidates with hands-on experience building custom vector pipelines using <code>FAISS</code>, <code>Milvus</code>, <code>Weaviate</code>, <code>Qdrant</code>, and custom HNSW indexing algorithms.</p>
             </div>
-            <div class="card" style="--primary: #f59e0b;">
-              <h4>Framework Wrapper Trap</h4>
-              <p>Penalizes profiles limited to thin API wrapper calls (LangChain) lacking fundamental ML infrastructure depth.</p>
+            <div class="card">
+              <h4>Evaluation & Quant Metrics</h4>
+              <p>Rewards rigorous validation methodologies demonstrated by terms like <code>NDCG</code>, <code>MRR</code>, <code>Recall@K</code>, <code>Precision@K</code>, and automated LLM-as-a-judge frameworks.</p>
             </div>
-            <div class="card" style="--primary: #3b82f6;">
-              <h4>Product vs. Services</h4>
-              <p>Rewards candidates who have built scalable user-facing architectures while down-weighting IT services trajectories.</p>
-            </div>
-            <div class="card" style="--primary: #10b981;">
-              <h4>Honeypot Disqualification</h4>
-              <p>Automatically eliminates synthetic profiles claiming expert proficiency with &lt;6 months duration or impossible education spans.</p>
+            <div class="card">
+              <h4>Foundational ML Systems</h4>
+              <p>Differentiates true practitioners from API wrappers by tracking deep training terms: <code>QLoRA</code>, <code>FlashAttention</code>, <code>vLLM</code>, <code>DeepSpeed</code>, and distributed pruning.</p>
             </div>
           </div>
         </div>
         <div class="slide-footer">
-          <span>Team Antigravity AI</span>
-          <span>Redrob Hackathon Submission</span>
+          <span>Team Antigravity AI — Principal ML Lead & Solution Architect</span>
+          <span>Redrob Intelligent Candidate Discovery Challenge</span>
         </div>
       </div>
 
@@ -351,27 +366,34 @@
       <div class="slide">
         <div class="slide-header">
           <div>
-            <div class="category">Behavioral Intelligence</div>
-            <div class="slide-title">The Behavioral Engagement Envelope</div>
+            <div class="category">Quality Assurance</div>
+            <div class="slide-title">Defeating JD Traps & Synthetic Honeypots</div>
           </div>
           <div class="slide-num">04</div>
         </div>
         <div class="slide-body">
-          <p class="lead">In technical recruiting, availability is vital. We break ties between technical twins using dynamic behavioral multipliers:</p>
           <div class="grid-2">
-            <div class="card">
-              <h4>Recruiter Response & Recency</h4>
-              <p>Applies a linear scaling envelope (0.6x to 1.1x boost) favoring candidates who actively respond to inquiries and have logged into the platform within the last 30 days.</p>
+            <div class="card" style="border-left-color: #dc2626;">
+              <h4>Title Chasers Penalty <span class="badge badge-red">-40% Multiplier</span></h4>
+              <p>Habitual job-hoppers inflate titles without building depth. If a candidate averages &lt;18 months tenure across &ge;3 roles, our scoring engine applies a sharp 0.60x penalty, preventing serial job-hoppers from taking top rank positions.</p>
             </div>
-            <div class="card" style="--primary: var(--accent);">
-              <h4>Notice Period Premium</h4>
-              <p>Prioritizes candidates who are "Open to Work" or have sub-30-day notice periods over candidates locked in rigid 90-day transition agreements.</p>
+            <div class="card" style="border-left-color: #d97706;">
+              <h4>Framework Wrapper Filter <span class="badge" style="background:#fef3c7;color:#b45309;border-color:#fde68a;">Anti-Stuffer</span></h4>
+              <p>Candidates listing superficial wrapper libraries (<code>LangChain</code>, basic OpenAI prompts) without foundational systems keywords receive a downgraded semantic relevance multiplier compared to core systems builders.</p>
+            </div>
+            <div class="card" style="border-left-color: #2563eb;">
+              <h4>Product vs. Services Alignment <span class="badge">Culture Fit</span></h4>
+              <p>For a Founding Team role, end-to-end product ownership is essential. Candidates from pure product companies receive positive affinity weighting over candidates spending their careers at outsourced IT services firms.</p>
+            </div>
+            <div class="card" style="border-left-color: #16a34a;">
+              <h4>Honeypot Disqualification <span class="badge badge-green">Zero Tolerance</span></h4>
+              <p>Synthetic trap candidates injected into the dataset (e.g., claiming 10+ years of PyTorch experience when graduated 2 years ago, or expert proficiency with &lt;6m duration) are flagged and locked to a score of <code>0.0000</code>.</p>
             </div>
           </div>
         </div>
         <div class="slide-footer">
-          <span>Team Antigravity AI</span>
-          <span>Redrob Hackathon Submission</span>
+          <span>Team Antigravity AI — Principal ML Lead & Solution Architect</span>
+          <span>Redrob Intelligent Candidate Discovery Challenge</span>
         </div>
       </div>
 
@@ -379,28 +401,28 @@
       <div class="slide">
         <div class="slide-header">
           <div>
-            <div class="category">Empirical Metrics</div>
-            <div class="slide-title">Performance Benchmarks & Validation</div>
+            <div class="category">Behavioral Economics</div>
+            <div class="slide-title">The Behavioral Engagement Multiplier</div>
           </div>
           <div class="slide-num">05</div>
         </div>
         <div class="slide-body">
+          <p class="lead">In real-world talent acquisition, technical excellence is meaningless if the candidate is unreachable. We compute a compound behavioral modifier across platform signals:</p>
           <table>
             <thead>
-              <tr><th>Pipeline Stage / Metric</th><th>Measured Value</th><th>Specification Budget</th><th>Status</th></tr>
+              <tr><th>Signal Dimension</th><th>Recruiter Evaluation Logic</th><th>Mathematical Scoring Impact</th></tr>
             </thead>
             <tbody>
-              <tr><td>Pass 1 (Corpus Training)</td><td>~13.1 seconds</td><td>Streamed Processing</td><td><span class="badge">Optimized</span></td></tr>
-              <tr><td>Pass 2 (Hybrid Evaluation)</td><td>~13.6 seconds</td><td>Streamed Processing</td><td><span class="badge">Optimized</span></td></tr>
-              <tr><td><strong>Total Execution Time</strong></td><td><strong>~26.7 seconds</strong></td><td>&le; 300 seconds (5 min)</td><td><span class="badge badge-success">✅ 11x Faster</span></td></tr>
-              <tr><td><strong>Peak RAM Consumption</strong></td><td><strong>~145 MB</strong></td><td>&le; 16,000 MB (16 GB)</td><td><span class="badge badge-success">✅ Minimal</span></td></tr>
-              <tr><td><strong>Output Validation Check</strong></td><td><strong>PASSED</strong></td><td>Exactly 100 Rows, Monotonic</td><td><span class="badge badge-success">✅ Verified</span></td></tr>
+              <tr><td><strong>Recruiter Response Rate</strong></td><td>Measures responsiveness to outreach messages over the past 90 days.</td><td>Linear scaling from <code>0.60x</code> (unresponsive) up to <code>1.10x</code> boost.</td></tr>
+              <tr><td><strong>Platform Activity Recency</strong></td><td>Tracks last login and profile refresh timestamp.</td><td>Penalizes profiles dormant for &gt;90 days (<code>0.85x</code>) or &gt;180 days (<code>0.70x</code>).</td></tr>
+              <tr><td><strong>Notice Period / Availability</strong></td><td>Evaluates immediate transition readiness vs. lengthy contract lock-ins.</td><td>Boosts immediate availability / sub-30 days by <code>1.05x</code>; penalties for 90+ days.</td></tr>
+              <tr><td><strong>Assessment Verification</strong></td><td>Checks whether coding and ML assessment badges are officially verified.</td><td>Adds up to <code>+0.050</code> absolute confidence bonus to technical score.</td></tr>
             </tbody>
           </table>
         </div>
         <div class="slide-footer">
-          <span>Team Antigravity AI</span>
-          <span>Redrob Hackathon Submission</span>
+          <span>Team Antigravity AI — Principal ML Lead & Solution Architect</span>
+          <span>Redrob Intelligent Candidate Discovery Challenge</span>
         </div>
       </div>
 
@@ -408,28 +430,29 @@
       <div class="slide">
         <div class="slide-header">
           <div>
-            <div class="category">Final Deliverables</div>
-            <div class="slide-title">Submission Package & Declarations</div>
+            <div class="category">Empirical Results</div>
+            <div class="slide-title">Performance Benchmarks & Submission Compliance</div>
           </div>
           <div class="slide-num">06</div>
         </div>
         <div class="slide-body">
-          <div class="grid-2">
-            <div class="card">
-              <h4>Deliverables Location</h4>
-              <p><strong>CSV Output:</strong> <code>OUTPUT/submission.csv</code><br>
-              <strong>Metadata:</strong> <code>OUTPUT/submission_metadata.yaml</code><br>
-              <strong>Live UI Sandbox:</strong> Streamlit Dashboard (<code>app.py</code>)</p>
-            </div>
-            <div class="card" style="--primary: #10b981;">
-              <h4>Privacy & Originality Declaration</h4>
-              <p>All code is 100% original work. The pipeline executes offline on local CPU. Zero candidate data or PII was transmitted to external LLM APIs during ranking.</p>
-            </div>
-          </div>
+          <p class="lead">Execution benchmarked across 100,000 JSONL records on a local workstation (8 CPU Cores, Windows 11):</p>
+          <table>
+            <thead>
+              <tr><th>Performance Dimension</th><th>Measured Benchmark</th><th>Hackathon Specification Budget</th><th>Validation Status</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Pass 1: Corpus TF-IDF Training</strong></td><td>13.12 seconds</td><td>Offline Streaming Processing</td><td><span class="badge badge-green">PASSED</span></td></tr>
+              <tr><td><strong>Pass 2: Hybrid Evaluation & Scoring</strong></td><td>13.66 seconds</td><td>Offline Streaming Processing</td><td><span class="badge badge-green">PASSED</span></td></tr>
+              <tr><td><strong>Total End-to-End Runtime</strong></td><td><strong>26.78 seconds</strong></td><td>&le; 300.00 seconds (5 Minutes)</td><td><span class="badge badge-green" style="font-size:13px;">✅ 11.2x Faster</span></td></tr>
+              <tr><td><strong>Peak RAM Consumption</strong></td><td><strong>~145.4 MB</strong></td><td>&le; 16,000.0 MB (16 GB Limit)</td><td><span class="badge badge-green" style="font-size:13px;">✅ 99% Margin</span></td></tr>
+              <tr><td><strong>Submission Format Validation</strong></td><td>100 Rows, Monotonic Scores</td><td>Exactly 100 Rows, CSV Validated</td><td><span class="badge badge-green" style="font-size:13px;">✅ 100% Valid</span></td></tr>
+            </tbody>
+          </table>
         </div>
         <div class="slide-footer">
-          <span>Team Antigravity AI</span>
-          <span>Redrob Hackathon Submission</span>
+          <span>Team Antigravity AI — Principal ML Lead & Solution Architect</span>
+          <span>Redrob Intelligent Candidate Discovery Challenge</span>
         </div>
       </div>
 
