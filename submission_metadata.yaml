@@ -1,14 +1,14 @@
 # Redrob Hackathon — Submission Metadata
-team_name: "Antigravity AI"
+team_name: "The AI Recruiters"
 
 primary_contact:
   name: "Manoj Chavan"
-  email: "manoj@example.com"
+  email: "manojschavan6@gmail.com"
   phone: "+91-9876543210"
 
 team_members:
   - name: "Manoj Chavan"
-    email: "manoj@example.com"
+    email: "manojschavan6@gmail.com"
     role: "AI Lead & System Architect"
 
 github_repo: "https://github.com/manoj-chavan-13/redrob-ranker"
