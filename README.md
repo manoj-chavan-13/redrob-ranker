@@ -5,6 +5,7 @@
 [![Runtime](https://img.shields.io/badge/Runtime-~26s%20(100K%20Profiles)-f59e0b?style=for-the-badge)]()
 [![RAM Budget](https://img.shields.io/badge/Peak%20RAM-~145%20MB%20%2F%2016%20GB-06b6d4?style=for-the-badge)]()
 [![Python](https://img.shields.io/badge/Python-3.11%2B-1e293b?style=for-the-badge&logo=python)]()
+[![Docker Hub](https://img.shields.io/badge/Docker%20Hub-manojc13%2Fredrob--ranker-06b6d4?style=for-the-badge&logo=docker)](https://hub.docker.com/r/manojc13/redrob-ranker)
 
 > **Architected by Team Titan**  
 > *(IT & CS Undergraduate Developers — Jayesh Kadam, Manoj Chavan, Lalit Ahire)*  

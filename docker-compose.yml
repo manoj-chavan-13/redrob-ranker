@@ -5,11 +5,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: redrob-ranker:latest
+    image: manojc13/redrob-ranker:latest
     container_name: redrob_candidate_ranking
     volumes:
-      - ./:/app
-    command: ["--candidates", "/app/candidates.jsonl", "--out", "/app/submission.csv"]
+      - ./data:/app/data
+      - ./OUTPUT:/app/OUTPUT
+    command: ["--candidates", "/app/data/candidates.jsonl", "--out", "/app/OUTPUT/submission.csv"]
     environment:
       - PYTHONUNBUFFERED=1
     mem_limit: 16g
