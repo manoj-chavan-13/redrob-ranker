@@ -6,7 +6,7 @@
 [![RAM Budget](https://img.shields.io/badge/Peak%20RAM-~145%20MB%20%2F%2016%20GB-06b6d4?style=for-the-badge)]()
 [![Python](https://img.shields.io/badge/Python-3.11%2B-1e293b?style=for-the-badge&logo=python)]()
 
-> **Architected by Antigravity AI**  
+> **Architected by Team Titan**  
 > *(Principal ML Lead, Staff AI Scientist, Senior Technical Recruiter, MLOps Engineer)*  
 > Engineered specifically for the **Redrob Founding Team Senior AI Engineer Mandate**, delivering high-precision talent discovery that eliminates keyword-stuffing noise and models real-world hiring availability.
 
@@ -199,6 +199,6 @@ docker run --rm --entrypoint python -v "${PWD}/OUTPUT:/app/OUTPUT" manojc13/redr
 
 ## 📜 Declarations & Compliance
 
-* **Originality**: All source code is 100% original work developed by Team Antigravity AI.
+* **Originality**: All source code is 100% original work developed by Team Titan.
 * **Privacy & Security**: The ranking execution runs offline and locally on CPU. Zero candidate personally identifiable information (PII) or profile text was transmitted outside the sandboxed evaluation environment.
 * **Reproducibility**: The sorting algorithm enforces secondary deterministic sorting by `candidate_id`, guaranteeing identical output across consecutive runs.
