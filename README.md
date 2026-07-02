@@ -7,7 +7,7 @@
 [![Python](https://img.shields.io/badge/Python-3.11%2B-1e293b?style=for-the-badge&logo=python)]()
 
 > **Architected by Team Titan**  
-> *(Principal ML Lead, Staff AI Scientist, Senior Technical Recruiter, MLOps Engineer)*  
+> *(IT & CS Undergraduate Developers — Jayesh Kadam, Manoj Chavan, Lalit Ahire)*  
 > Engineered specifically for the **Redrob Founding Team Senior AI Engineer Mandate**, delivering high-precision talent discovery that eliminates keyword-stuffing noise and models real-world hiring availability.
 
 ---
