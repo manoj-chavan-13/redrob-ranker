@@ -7,3 +7,10 @@ env/
 venv/
 .venv/
 .DS_Store
+*.jsonl
+*.jsonl.gz
+job_description.docx
+presentation_deck.html
+presentation_deck.md
+OUTPUT/presentation_deck.html
+OUTPUT/presentation_deck.md

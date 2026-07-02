@@ -7,11 +7,20 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-# Copy the ranking script and validator into the container
-COPY rank.py validate_submission.py /app/
+# Install dependencies first (leveraging Docker layer cache)
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Set non-root user for security best practices
-RUN useradd -m -u 1000 redrob && chown -R redrob:redrob /app
+# Copy only required application source code and configuration files
+COPY app/ /app/app/
+COPY configs/ /app/configs/
+COPY main.py rank.py validate_submission.py app.py /app/
+
+# Create data and output directories, and set non-root user for security best practices
+RUN mkdir -p /app/data /app/OUTPUT && \
+    useradd -m -u 1000 redrob && \
+    chown -R redrob:redrob /app
+
 USER redrob
 
 # Default command entry point

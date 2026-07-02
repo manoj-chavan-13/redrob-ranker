@@ -154,10 +154,45 @@ redrob-ranker/
 
 ## 🐳 Docker Containerization
 
-To run the ranking job inside an isolated container adhering strictly to resource limitations:
+To run the ranking job inside an isolated container adhering strictly to resource limitations ($\le 16\text{ GB}$ RAM budget, multi-core processing), follow these steps:
+
+### Option A: Pull Pre-Built Image from Docker Hub (Recommended)
+You can instantly run the official lightweight container image directly from Docker Hub without building locally:
 ```bash
-docker build -t redrob-ranker:latest .
-docker run --rm -v "%cd%:/app" redrob-ranker:latest python main.py --candidates /app/data/candidates.jsonl --out /app/OUTPUT/submission.csv
+docker pull manojc13/redrob-ranker:latest
+```
+
+### Option B: Build Locally from Source
+If you prefer building the image from the local repository:
+```bash
+docker build -t manojc13/redrob-ranker:latest .
+```
+
+---
+
+### Run the Containerized Pipeline
+
+Mount your local `data/` and `OUTPUT/` directories so the container can read candidate records and export the final ranking CSV back to your host filesystem:
+
+**Windows PowerShell:**
+```powershell
+docker run --rm -v "${PWD}/data:/app/data" -v "${PWD}/OUTPUT:/app/OUTPUT" manojc13/redrob-ranker:latest --candidates /app/data/candidates.jsonl --out /app/OUTPUT/submission.csv
+```
+
+**Windows Command Prompt (Legacy CMD):**
+```cmd
+docker run --rm -v "%cd%/data:/app/data" -v "%cd%/OUTPUT:/app/OUTPUT" manojc13/redrob-ranker:latest --candidates /app/data/candidates.jsonl --out /app/OUTPUT/submission.csv
+```
+
+**Linux / macOS / Git Bash:**
+```bash
+docker run --rm -v "$(pwd)/data:/app/data" -v "$(pwd)/OUTPUT:/app/OUTPUT" manojc13/redrob-ranker:latest --candidates /app/data/candidates.jsonl --out /app/OUTPUT/submission.csv
+```
+
+### Verify Container Output & Compliance
+Validate the generated output directly inside the container to confirm 100-row format compliance:
+```powershell
+docker run --rm --entrypoint python -v "${PWD}/OUTPUT:/app/OUTPUT" manojc13/redrob-ranker:latest validate_submission.py /app/OUTPUT/submission.csv
 ```
 
 ---
